@@ -1,33 +1,52 @@
-// ===== MOBILE MENU TOGGLE =====
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector("nav");
+document.addEventListener('DOMContentLoaded', () => {
+  // init AOS
+  if (typeof AOS !== 'undefined') AOS.init({ duration:700, once:true, offset:100 });
 
-  menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    menuToggle.classList.toggle("open");
+  // menu toggle (hamburger)
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  function closeMenu(){
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('show');
+    menuToggle.setAttribute('aria-expanded','false');
+  }
+
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('show');
+    const expanded = menuToggle.classList.contains('active');
+    menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
   });
 
-  // Close menu when clicking a link
-  document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
-      menuToggle.classList.remove("open");
-    });
+  // close on outside click
+  document.addEventListener('click', (e) =>{
+    if (navLinks.classList.contains('show') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+      closeMenu();
+    }
   });
 
-  // ===== SCROLL ANIMATIONS =====
-  const elements = document.querySelectorAll(".fade-in");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, {
-    threshold: 0.2
+  // close on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => closeMenu());
   });
 
-  elements.forEach(el => observer.observe(el));
+  // back to top button
+  const back = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) back.classList.add('visible');
+    else back.classList.remove('visible');
+  });
+  back.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+
+  // lightweight duplicate-collab hack: clone first items to make smooth feel (if needed)
+  const track = document.querySelector('.collab-track');
+  if(track){
+    // don't overdo cloning on very small screens
+    try {
+      const items = Array.from(track.children);
+      items.slice(0, items.length).forEach(i => track.appendChild(i.cloneNode(true)));
+    } catch(e){}
+  }
 });
