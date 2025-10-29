@@ -1,52 +1,70 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // init AOS
-  if (typeof AOS !== 'undefined') AOS.init({ duration:700, once:true, offset:100 });
+// ===== HAMBURGER MENU TOGGLE =====
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
 
-  // menu toggle (hamburger)
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  menuToggle.classList.toggle('open');
+});
 
-  function closeMenu(){
-    menuToggle.classList.remove('active');
-    navLinks.classList.remove('show');
-    menuToggle.setAttribute('aria-expanded','false');
-  }
+// ===== SCROLL ANIMATION =====
+const fadeElems = document.querySelectorAll('.fade-in');
 
-  menuToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('show');
-    const expanded = menuToggle.classList.contains('active');
-    menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  });
-
-  // close on outside click
-  document.addEventListener('click', (e) =>{
-    if (navLinks.classList.contains('show') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-      closeMenu();
+function handleScroll() {
+  fadeElems.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add('visible');
     }
   });
+}
 
-  // close on link click
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => closeMenu());
+window.addEventListener('scroll', handleScroll);
+handleScroll(); // trigger on load
+
+// ===== SMOOTH SCROLLING FOR NAV LINKS =====
+const navLinks = document.querySelectorAll('nav ul li a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').slice(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+      nav.classList.remove('active');
+      menuToggle.classList.remove('open');
+    }
   });
+});
 
-  // back to top button
-  const back = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) back.classList.add('visible');
-    else back.classList.remove('visible');
+// ===== ANNOUNCEMENT AUTO SLIDE =====
+let currentAnnouncement = 0;
+const announcements = document.querySelectorAll('.announcement');
+if (announcements.length > 0) {
+  setInterval(() => {
+    announcements[currentAnnouncement].classList.remove('active');
+    currentAnnouncement = (currentAnnouncement + 1) % announcements.length;
+    announcements[currentAnnouncement].classList.add('active');
+  }, 4000);
+}
+
+// ===== GALLERY IMAGE LIGHTBOX =====
+const galleryImages = document.querySelectorAll('.gallery img');
+const lightbox = document.createElement('div');
+lightbox.classList.add('lightbox');
+document.body.appendChild(lightbox);
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.classList.add('active');
+    const lightboxImg = document.createElement('img');
+    lightboxImg.src = img.src;
+    while (lightbox.firstChild) lightbox.removeChild(lightbox.firstChild);
+    lightbox.appendChild(lightboxImg);
   });
-  back.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+});
 
-  // lightweight duplicate-collab hack: clone first items to make smooth feel (if needed)
-  const track = document.querySelector('.collab-track');
-  if(track){
-    // don't overdo cloning on very small screens
-    try {
-      const items = Array.from(track.children);
-      items.slice(0, items.length).forEach(i => track.appendChild(i.cloneNode(true)));
-    } catch(e){}
-  }
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
 });
