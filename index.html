@@ -1,131 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Commerce Society | NSCBM Govt. College Hamirpur</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="logo.png" />
+
+  <!-- Fonts & AOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="commerce-style.css" />
+  <link rel="icon" href="assets/logo.png" />
 </head>
-
 <body>
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Commerce Society Logo">
-      <h1>Commerce Society</h1>
+    <div class="container header">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Commerce Logo" class="logo-img">
+        <div>
+          <h1>Commerce Society</h1>
+          <p class="sub">N.S.C.B.M. Govt. College, Hamirpur</p>
+        </div>
+      </div>
+
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav id="nav-menu" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#collab">Collaborations</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <div class="menu-toggle"></div>
-
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-content fade-in">
-      <h1>Commerce Society</h1>
-      <p>NSCBM Govt. College Hamirpur</p>
-      <a href="#about" class="btn">Learn More</a>
+  <!-- SMALL LOGO STRIP (optional, keeps layout uniform) -->
+  <div class="logo-strip">
+    <a href="#"><img src="assets/logo.png" alt="College"></a>
+    <a href="#"><img src="assets/unit-logo.webp" alt="Unit"></a>
+    <a href="#"><img src="assets/partner1.png" alt="Partner"></a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-inner" data-aos="fade-up">
+      <h2>Commerce Society</h2>
+      <p>We build practical business skills — workshops, quizzes, internships and real-world exposure for commerce students.</p>
+      <a class="btn" href="#about">Learn More</a>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="about fade-in">
-    <h2>About Us</h2>
-    <p>
-      The Commerce Society of NSCBM Govt. College Hamirpur is a dynamic forum for
-      students of commerce and business studies. We aim to enhance practical
-      knowledge, foster teamwork, and develop leadership and analytical skills
-      through seminars, workshops, and community-driven activities.
-    </p>
+  <!-- ANNOUNCEMENTS -->
+  <section id="announcements" class="container section" data-aos="fade-up">
+    <h3>Announcements</h3>
+    <div class="announcements-grid">
+      <article class="announce card">
+        <div class="announce-date">16 Oct 2025</div>
+        <h4>Workshop on GST Basics</h4>
+        <p>Venue: Seminar Hall | Speaker: Prof. Sharma | Register by 18 Oct.</p>
+      </article>
+
+      <article class="announce card">
+        <div class="announce-date">10 Oct 2025</div>
+        <h4>Campus Cleanliness Drive</h4>
+        <p>Meet at 8:00 AM near Admin Block. All members requested to attend.</p>
+      </article>
+
+      <article class="announce card">
+        <div class="announce-date">01 Oct 2025</div>
+        <h4>Inter-college Biz Quiz Results</h4>
+        <p>Congratulations to Team A for securing 2nd place. Certificates will be distributed.</p>
+      </article>
+    </div>
+
+    <a class="read-more" href="announcements.html">View All Announcements →</a>
   </section>
 
-  <!-- ===== TEAM ===== -->
-  <section id="team" class="fade-in">
-    <h2>Our Team</h2>
-    <div class="team">
-      <div class="member">
-        <img src="team1.jpg" alt="Team Member">
-        <h3>Dr. XYZ</h3>
+  <!-- GALLERY -->
+  <section id="gallery" class="container section" data-aos="fade-up">
+    <h3>Gallery</h3>
+    <div class="gallery-grid">
+      <img src="assets/gallery1.jpg" alt="gallery 1">
+      <img src="assets/gallery2.jpg" alt="gallery 2">
+      <img src="assets/gallery3.jpg" alt="gallery 3">
+      <img src="assets/gallery4.jpg" alt="gallery 4">
+    </div>
+    <a class="read-more" href="gallery.html">View Full Gallery →</a>
+  </section>
+
+  <!-- COLLABORATIONS (carousel-like) -->
+  <section id="collab" class="container section" data-aos="fade-up">
+    <h3>Collaborations</h3>
+    <div class="collab-track">
+      <div class="collab-item"><img src="assets/partner1.png" alt="Partner 1"></div>
+      <div class="collab-item"><img src="assets/partner2.png" alt="Partner 2"></div>
+      <div class="collab-item"><img src="assets/partner3.png" alt="Partner 3"></div>
+      <div class="collab-item"><img src="assets/partner4.png" alt="Partner 4"></div>
+      <!-- duplicated for smooth scroll effect -->
+      <div class="collab-item"><img src="assets/partner1.png" alt="Partner 1"></div>
+      <div class="collab-item"><img src="assets/partner2.png" alt="Partner 2"></div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES / REACT ACTIVITIES -->
+  <section id="activities" class="container section" data-aos="fade-up">
+    <h3>Activities & React Sessions</h3>
+    <div class="cards activities-cards">
+      <div class="card">
+        <h4>Financial Literacy Session</h4>
+        <p>Workshop covering basics of budgeting, savings & investments for students.</p>
+      </div>
+      <div class="card">
+        <h4>Market Simulation</h4>
+        <p>Students participate in a mock stock market to learn trading basics and strategy.</p>
+      </div>
+      <div class="card">
+        <h4>Case-Study Reacts</h4>
+        <p>Small groups react & present to real business case studies — critical thinking practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="container section" data-aos="fade-up">
+    <h3>Our Team</h3>
+    <div class="team-grid">
+      <div class="member card">
+        <img src="assets/team1.jpg" alt="Dr. XYZ">
+        <h4>Dr. XYZ</h4>
         <p>Faculty Coordinator</p>
       </div>
-      <div class="member">
-        <img src="team2.jpg" alt="Team Member">
-        <h3>ABC Sharma</h3>
+      <div class="member card">
+        <img src="assets/team2.jpg" alt="ABC Sharma">
+        <h4>ABC Sharma</h4>
         <p>President</p>
       </div>
-      <div class="member">
-        <img src="team3.jpg" alt="Team Member">
-        <h3>Ritika Verma</h3>
+      <div class="member card">
+        <img src="assets/team3.jpg" alt="Ritika Verma">
+        <h4>Ritika Verma</h4>
         <p>Vice President</p>
       </div>
-      <div class="member">
-        <img src="team4.jpg" alt="Team Member">
-        <h3>Harsh Kumar</h3>
+      <div class="member card">
+        <img src="assets/team4.jpg" alt="Harsh Kumar">
+        <h4>Harsh Kumar</h4>
         <p>Secretary</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== ACTIVITIES ===== -->
-  <section id="activities" class="fade-in">
-    <h2>Activities</h2>
-    <p>
-      Our activities include financial literacy campaigns, business model
-      competitions, budget analysis sessions, group discussions, and career
-      guidance seminars to enhance students’ practical exposure to the
-      world of commerce.
-    </p>
+  <!-- RESOURCES -->
+  <section id="resources" class="container section" data-aos="fade-up">
+    <h3>Resources & Downloads</h3>
+    <ul class="resources-list">
+      <li><a href="assets/syllabus.pdf" target="_blank">Commerce Syllabus (PDF)</a></li>
+      <li><a href="assets/notes.pdf" target="_blank">Study Notes & Past Papers</a></li>
+      <li><a href="assets/placements.pdf" target="_blank">Internship & Placement Info</a></li>
+    </ul>
   </section>
 
-  <!-- ===== ACHIEVEMENTS ===== -->
-  <section id="achievements" class="fade-in">
-    <h2>Achievements</h2>
-    <p>
-      The society has proudly represented the college in inter-college
-      business quizzes, stock market simulations, and entrepreneurship
-      summits — bringing home accolades and recognition.
-    </p>
-  </section>
-
-  <!-- ===== RESOURCES ===== -->
-  <section id="resources" class="fade-in">
-    <h2>Resources</h2>
-    <p>
-      Explore our curated materials on accounting, finance, taxation,
-      and business studies — including notes, PDFs, and learning tools
-      contributed by students and faculty.
-    </p>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact fade-in">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <input type="submit" value="Send Message" />
+  <!-- CONTACT -->
+  <section id="contact" class="container section contact" data-aos="fade-up">
+    <h3>Contact Us</h3>
+    <p>Email: <a href="mailto:commerce@college.edu">commerce@college.edu</a></p>
+    <form class="contact-form" action="#" method="post" onsubmit="return false">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="5" placeholder="Message" required></textarea>
+      <button class="btn" type="submit">Send Message</button>
     </form>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>© 2025 Commerce Society | NSCBM Govt. College Hamirpur</p>
-    <p>Designed & Developed by Commerce Society Team</p>
+    <div class="container footer-inner">
+      <p>© 2025 Commerce Society | NSCBM Govt. College Hamirpur</p>
+      <p>Designed by Commerce Society Team</p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <a id="back-to-top" href="#" title="Back to top">↑</a>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="commerce-script.js"></script>
 </body>
 </html>
