@@ -1,92 +1,459 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commerce Society | G.C. Hamirpur</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Department of Commerce - NSCBM Govt. College Hamirpur</title>
+  <meta name="description" content="Department of Commerce — NSCBM Govt. College Hamirpur. Empowering future business leaders.">
+
+  <!-- Favicons (optional) -->
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Google Fonts (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy: #0b2a3a;         /* deep navy base */
+      --teal: #0f5b55;         /* teal accent */
+      --gold: #d4af37;         /* logo gold */
+      --muted: #9fb3b0;        /* muted text */
+      --glass: rgba(255,255,255,0.06);
+      --radius: 12px;
+      --maxw: 1200px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue","Noto Sans",Arial;
+      background: linear-gradient(180deg, var(--navy) 0%, #0f3e48 60%, #08303a 100%);
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Layout */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(4,12,18,0.55), rgba(4,12,18,0.35));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(2,8,12,0.25);
+    }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;
+    }
+    .brand img{
+      height:56px; width:auto; border-radius:10px; object-fit:contain;
+      box-shadow: 0 6px 18px rgba(3,9,12,0.45);
+      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.02));
+    }
+    .brand .title{
+      line-height:1;
+    }
+    .brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:0.2px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    /* Desktop nav links */
+    nav.desktop-links{display:flex; gap:18px; align-items:center}
+    nav.desktop-links a{
+      color:#e9f2f1; text-decoration:none; font-weight:600; font-size:14px;
+      padding:8px 10px; border-radius:8px; transition:all 180ms var(--ease);
+    }
+    nav.desktop-links a:hover{background:var(--glass); transform:translateY(-2px)}
+    nav.desktop-links .cta{
+      background:linear-gradient(90deg,var(--gold), #f0c65d); color:var(--navy);
+      padding:8px 14px; border-radius:12px; font-weight:700; box-shadow:0 8px 22px rgba(212,175,55,0.12)
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle{display:none; background:transparent; border:0; color:inherit}
+    .menu-toggle svg{width:28px;height:28px}
+
+    /* Hero */
+    .hero{
+      padding:56px 0; display:flex; align-items:center; justify-content:center; text-align:center;
+      min-height:72vh; position:relative;
+      background-image: linear-gradient(120deg, rgba(13,34,46,0.25) 0%, rgba(15,91,85,0.06) 50%);
+      overflow:hidden;
+    }
+    .hero .overlay-decor{
+      position:absolute; inset:0; pointer-events:none; opacity:0.14;
+      background-image: radial-gradient( circle at 10% 30%, rgba(212,175,55,0.03), transparent 6%),
+                        radial-gradient( circle at 90% 70%, rgba(212,175,55,0.02), transparent 10%);
+      mix-blend-mode:overlay;
+    }
+    .hero .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:32px; border-radius:18px; max-width:980px; width:100%;
+      display:grid; gap:18px; grid-template-columns: 140px 1fr; align-items:center;
+      box-shadow: 0 20px 60px rgba(3,9,12,0.6);
+      border: 1px solid rgba(212,175,55,0.06);
+      transition:transform 220ms var(--ease);
+    }
+    .hero .card:hover{ transform:translateY(-6px) }
+    .logo-wrap{display:flex; align-items:center; justify-content:center}
+    .logo-wrap img{width:120px; height:120px; object-fit:contain; border-radius:16px}
+
+    .hero h2{margin:0;font-size:28px;color:var(--gold);letter-spacing:0.6px}
+    .hero p.lead{margin:0;color:#dfecee; font-size:15px}
+    .hero .action-row{display:flex; gap:12px; align-items:center; justify-self:start; margin-top:6px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--gold), #f0c65d); color:var(--navy)}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.06); color: #e9f2f1; background:transparent}
+
+    /* Small info boxes */
+    .info-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px}
+    .info{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      display:flex; gap:12px; align-items:center;
+    }
+    .info .icon{
+      width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:rgba(212,175,55,0.08); color:var(--gold); font-weight:800
+    }
+    .info h4{margin:0;font-size:14px}
+    .info p{margin:0;font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    section{padding:48px 0}
+    section .section-title{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+    .section-title h3{margin:0; font-size:18px; color:var(--gold); letter-spacing:0.3px}
+    .cards{display:grid; grid-template-columns: repeat(3,1fr); gap:16px}
+
+    .card-item{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform 200ms var(--ease), box-shadow 200ms var(--ease);
+    }
+    .card-item:hover{ transform:translateY(-6px); box-shadow: 0 18px 40px rgba(3,9,12,0.6) }
+    .card-item h4{margin:0 0 10px 0}
+    .card-item p{margin:0;color:var(--muted)}
+
+    /* Footer */
+    footer{padding:28px 0;background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.06)); border-top:1px solid rgba(255,255,255,0.02); margin-top:32px}
+    footer .footer-grid{display:flex; justify-content:space-between; gap:18px; align-items:center; flex-wrap:wrap}
+    footer small{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero .card{grid-template-columns: 1fr; text-align:center}
+      .info-grid{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 640px){
+      .brand h1{font-size:15px}
+      .brand img{height:48px}
+      nav.desktop-links{display:none}
+      .menu-toggle{display:block}
+      .container{padding:0 14px}
+      .info-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+    }
+
+    /* Mobile menu slide-in */
+    .mobile-menu{
+      position:fixed; top:0; right:-100%; width:78%; max-width:340px; height:100vh; z-index:80;
+      background: linear-gradient(180deg, rgba(8,18,23,0.98), rgba(6,12,15,0.98));
+      transition: right 320ms var(--ease); box-shadow: -8px 16px 40px rgba(1,6,10,0.7); padding:28px;
+      display:flex; flex-direction:column; gap:18px;
+    }
+    .mobile-menu.open{ right:0 }
+    .mobile-menu a{color:#e9f2f1; text-decoration:none; padding:10px 6px; border-radius:8px; font-weight:700}
+    .mobile-menu .close{margin-left:auto; background:transparent;border:0;color:var(--muted)}
+  </style>
 </head>
 <body>
 
-  <!-- ======= HEADER ======= -->
   <header>
-    <div class="logo-section">
-      <img src="college-logo.png" alt="College Logo" />
-      <div class="text-info">
-        <h2>Government College Hamirpur (H.P.)</h2>
-        <p>Commerce Society</p>
-      </div>
-      <img src="society-logo.png" alt="Society Logo" />
-    </div>
+    <div class="container nav">
+      <!-- Brand -->
+      <a href="index.html" class="brand" aria-label="Department of Commerce - Home">
+        <img src="assets/logo.png" alt="Commerce Society Logo" />
+        <div class="title">
+          <h1>Dept. of Commerce</h1>
+          <p>NSCBM Govt. College Hamirpur</p>
+        </div>
+      </a>
 
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </div>
+      <!-- Desktop links -->
+      <nav class="desktop-links" role="navigation" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="activities.html">Activities</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html" class="cta">Contact</a>
+      </nav>
 
-    <nav id="menu">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="activities.html">Activities</a></li>
-        <li><a href="achievements.html">Achievements</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+      <!-- Mobile toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <!-- hamburger -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <!-- ======= HERO SECTION ======= -->
-  <section class="hero fade-in">
-    <h1>Welcome to The Commerce Society</h1>
-    <p>Learning, Leadership, and Innovation in Commerce</p>
-    <a href="about.html" class="btn">Explore Society</a>
-  </section>
-
-  <!-- ======= ABOUT PREVIEW ======= -->
-  <section class="fade-in">
-    <h2>About Us</h2>
-    <p>
-      The Commerce Society of Government College Hamirpur is a student-driven platform 
-      promoting financial literacy, entrepreneurship, and leadership among young minds.
-    </p>
-    <a href="about.html" class="btn secondary">Read More</a>
-  </section>
-
-  <!-- ======= ACTIVITIES PREVIEW ======= -->
-  <section class="fade-in">
-    <h2>Recent Activities</h2>
-    <div class="preview-grid">
-      <div class="card">
-        <h3>Business Quiz</h3>
-        <p>A fun-filled challenge testing commerce knowledge and teamwork.</p>
-        <a href="activities.html" class="read-more">Read More →</a>
-      </div>
-      <div class="card">
-        <h3>Financial Workshop</h3>
-        <p>Hands-on learning about budgeting, saving, and smart investing.</p>
-        <a href="activities.html" class="read-more">Read More →</a>
-      </div>
-      <div class="card">
-        <h3>Entrepreneurship Talk</h3>
-        <p>Inspiring journeys from successful local entrepreneurs.</p>
-        <a href="activities.html" class="read-more">Read More →</a>
+  <!-- Mobile menu -->
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="assets/logo.png" alt="" style="height:56px;border-radius:10px"/>
+      <div>
+        <strong style="color:var(--gold)">Commerce Society</strong>
+        <div style="color:var(--muted);font-size:13px">NSCBM Govt. College Hamirpur</div>
       </div>
     </div>
-  </section>
 
-  <!-- ======= TEAM PREVIEW ======= -->
-  <section class="fade-in">
-    <h2>Our Team</h2>
-    <p>Meet the Faculty Coordinators and Core Members leading The Commerce Society.</p>
-    <a href="team.html" class="btn secondary">View Team</a>
-  </section>
+    <nav style="margin-top:6px; display:flex; flex-direction:column; gap:8px;">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="activities.html">Activities</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html" style="margin-top:8px; background:linear-gradient(90deg,var(--gold), #f0c65d); color:var(--navy); padding:10px 12px; border-radius:10px; text-align:center">Contact</a>
+    </nav>
 
-  <!-- ======= FOOTER ======= -->
+    <button class="close" id="closeMobile" aria-label="Close menu" style="margin-top:auto; color:var(--muted)">Close ✕</button>
+  </aside>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="overlay-decor" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="card" role="region" aria-label="Hero">
+          <div class="logo-wrap">
+            <!-- Replace with your logo path -->
+            <img src="assets/logo.png" alt="Commerce Society Logo">
+          </div>
+
+          <div style="text-align:left">
+            <h2>Department of Commerce</h2>
+            <p class="lead">NSCBM Govt. College Hamirpur — Empowering Future Business Leaders</p>
+
+            <div class="action-row">
+              <a class="btn btn-primary" href="about.html">About the Dept.</a>
+              <a class="btn btn-ghost" href="activities.html">Latest Activities</a>
+            </div>
+
+            <div class="info-grid" style="margin-top:14px">
+              <div class="info">
+                <div class="icon">📚</div>
+                <div>
+                  <h4>Courses</h4>
+                  <p>B.Com, M.Com, Vocational papers & add-ons</p>
+                </div>
+              </div>
+
+              <div class="info">
+                <div class="icon">🤝</div>
+                <div>
+                  <h4>Student Body</h4>
+                  <p>Commerce Society & student committees</p>
+                </div>
+              </div>
+
+              <div class="info">
+                <div class="icon">🏆</div>
+                <div>
+                  <h4>Achievements</h4>
+                  <p>Competitions, research & toppers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PREVIEW -->
+    <section id="about" class="container">
+      <div class="section-title">
+        <h3>About the Department</h3>
+      </div>
+      <div style="display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:280px">
+          <p style="color:#dfeeee; margin-top:0">
+            The Department of Commerce at NSCBM Govt. College Hamirpur offers rigorous undergraduate and postgraduate programs designed to develop
+            financial insight, business ethics, and real-world skills. We organise workshops, industrial visits, seminars and student-led projects to bridge theory and practice.
+          </p>
+          <p style="margin-top:12px"><a class="btn btn-ghost" href="about.html">Read more</a></p>
+        </div>
+
+        <div style="flex:1; min-width:260px">
+          <div class="cards" style="grid-template-columns:1fr; gap:12px">
+            <div class="card-item">
+              <h4>Mission</h4>
+              <p class="muted">To empower students with knowledge, entrepreneurship mindset and ethical business practices.</p>
+            </div>
+
+            <div class="card-item" style="margin-top:10px">
+              <h4>Vision</h4>
+              <p class="muted">To be a leading department producing industry-ready graduates and future leaders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team preview -->
+    <section class="container">
+      <div class="section-title">
+        <h3>Team</h3>
+      </div>
+      <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card-item">
+          <h4>Dr. A. B. Sharma</h4>
+          <p>Head of Department — M.Com, PhD</p>
+        </div>
+        <div class="card-item">
+          <h4>Ms. X. Yadav</h4>
+          <p>Assistant Professor — M.Com, NET</p>
+        </div>
+        <div class="card-item">
+          <h4>Mr. P. Kumar</h4>
+          <p>Lecturer — B.Com (Hons)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="container">
+      <div class="section-title">
+        <h3>Recent Activities</h3>
+      </div>
+      <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <article class="card-item">
+          <h4>Industrial Visit to Shimla Stock Exchange</h4>
+          <p>Students visited local financial institutions to learn live market operations and intern opportunities.</p>
+        </article>
+
+        <article class="card-item">
+          <h4>Financial Literacy Workshop</h4>
+          <p>Hands-on budgeting and digital-payments workshop for first-year students.</p>
+        </article>
+
+        <article class="card-item">
+          <h4>Commerce Fest 2025</h4>
+          <p>Inter-college competitions in debating, business plan pitching and case studies.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="container">
+      <div class="section-title">
+        <h3>Resources</h3>
+      </div>
+      <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card-item">
+          <h4>Syllabus & Course Outline</h4>
+          <p>Download semester-wise syllabus and course structures.</p>
+        </div>
+        <div class="card-item">
+          <h4>Previous Question Papers</h4>
+          <p>Access past exams to prepare and practice.</p>
+        </div>
+        <div class="card-item">
+          <h4>Notes & Study Material</h4>
+          <p>Faculty-uploaded notes, presentations and sample projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="container" style="padding-bottom:36px">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)">
+        <div>
+          <h3 style="margin:0; color:var(--gold)">Get in touch with the department</h3>
+          <p style="margin:6px 0 0 0; color:var(--muted)">For collaborations, queries or events — reach out to the Department of Commerce.</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    <p>Developed & Managed by Commerce Society, Department of Commerce, Government College Hamirpur (H.P.)</p>
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:var(--gold)">Department of Commerce</strong>
+        <div style="color:var(--muted)">NSCBM Govt. College Hamirpur</div>
+      </div>
+
+      <div style="text-align:right">
+        <div style="color:var(--muted)">Email: commerce@nscbm.edu.in</div>
+        <div style="color:var(--muted)">Phone: +91-xxxx-xxx-xxx</div>
+        <small>© <span id="year"></span> NSCBM Govt. College — All rights reserved</small>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobile = document.getElementById('closeMobile');
+
+    function openMenu(){
+      mobileMenu.classList.add('open');
+      menuToggle.setAttribute('aria-expanded','true');
+      mobileMenu.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu(){
+      mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded','false');
+      mobileMenu.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) closeMenu(); else openMenu();
+    });
+
+    closeMobile.addEventListener('click', closeMenu);
+
+    // Close menu when clicking outside on small screens
+    document.addEventListener('click', (e) => {
+      if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target) && mobileMenu.classList.contains('open')){
+        closeMenu();
+      }
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal anchors (if desired)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+          closeMenu();
+        }
+      })
+    });
+  </script>
 </body>
 </html>
