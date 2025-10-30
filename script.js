@@ -1,7 +1,9 @@
-// script.js
+// =======================
+// COMMERCE SOCIETY JS
+// =======================
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== THROTTLE FUNCTION =====
+  // ===== Throttle Function =====
   const throttle = (func, limit) => {
     let inThrottle;
     return function() {
@@ -15,16 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
-  // ===== AOS INITIALIZATION =====
+  // ===== AOS Initialization =====
   if (typeof AOS !== "undefined") {
     AOS.init({
-      duration: 800,
+      duration: 900,
       once: true,
-      offset: 100
+      offset: 120
     });
   }
 
-  // ===== MOBILE MENU =====
+  // ===== Mobile Menu Toggle =====
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
 
@@ -43,15 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
       menuToggle.setAttribute("aria-expanded", !isExpanded);
     });
 
-    const navLinks = navMenu.querySelectorAll("a");
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        if (navMenu.classList.contains("active")) {
-          closeMenu();
-        }
-      });
+    // Close when clicking nav links
+    navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => closeMenu());
     });
 
+    // Close when clicking outside
     document.addEventListener("click", (e) => {
       if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
         closeMenu();
@@ -59,15 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== SCROLL EFFECTS =====
+  // ===== Scroll Features =====
   const backToTopButton = document.getElementById("back-to-top");
   const sections = document.querySelectorAll("section[id]");
-  const navLinksForScroll = document.querySelectorAll("#nav-menu a[href^='#']");
+  const navLinks = document.querySelectorAll("#nav-menu a[href^='#']");
 
   const handleScroll = () => {
     const scrollY = window.pageYOffset;
 
-    // Back to Top Button
+    // Show/hide Back-to-Top
     if (backToTopButton) {
       if (scrollY > 300) {
         backToTopButton.classList.add("visible");
@@ -76,35 +75,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Active nav link highlight
-    if (sections.length > 0 && navLinksForScroll.length > 0) {
-      let currentSectionId = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 150) {
-          currentSectionId = section.getAttribute("id");
-        }
-      });
+    // Active nav link highlighting
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 150) {
+        current = section.getAttribute("id");
+      }
+    });
 
-      navLinksForScroll.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").substring(1) === currentSectionId) {
-          link.classList.add("active");
-        }
-      });
-    }
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").substring(1) === current) {
+        link.classList.add("active");
+      }
+    });
   };
 
   window.addEventListener("scroll", throttle(handleScroll, 100));
 
-  // ===== BACK TO TOP BUTTON CLICK =====
+  // ===== Back to Top Smooth Scroll =====
   if (backToTopButton) {
     backToTopButton.addEventListener("click", (e) => {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 });
