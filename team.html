@@ -28,7 +28,7 @@
       margin-bottom: 25px;
     }
 
-    .team-pdf iframe {
+    .team-pdf object {
       width: 100%;
       height: 800px;
       border: none;
@@ -54,13 +54,34 @@
       transform: scale(1.05);
     }
 
+    /* ===== BACK TO TOP BUTTON ===== */
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      font-size: 20px;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      display: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    #back-to-top:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
     /* ===== MOBILE OPTIMIZATION ===== */
     @media (max-width: 768px) {
       .team-pdf {
         padding: 40px 5%;
       }
 
-      .team-pdf iframe {
+      .team-pdf object {
         height: 500px;
       }
 
@@ -74,7 +95,7 @@
     }
 
     @media (max-width: 480px) {
-      .team-pdf iframe {
+      .team-pdf object {
         height: 400px;
       }
 
@@ -91,7 +112,7 @@
   <header>
     <div class="container header">
       <div class="brand">
-        <img src="assets/college logo.jpg" alt="College Logo">
+        <img src="assets/colege logo.jpg" alt="College Logo">
         <img src="assets/logo.png" alt="Society Logo">
         <div>
           <h1>Commerce Society</h1>
@@ -123,20 +144,25 @@
   <section class="hero">
     <div class="container">
       <h2>Our Team</h2>
-      <p>The dedicated members who drive the vision of the Commerce Society.</p>
+      <p>The dedicated members who drive the vision and excellence of the Commerce Society.</p>
     </div>
   </section>
 
   <!-- EMBEDDED PDF SECTION -->
   <section class="team-pdf container">
     <h3>Commerce Society Governing Body 2025</h3>
-    <p>You can view or download the full list of members below.</p>
+    <p>Meet the faculty coordinators and student members who make the Commerce Society thrive.</p>
     
-    <!-- PDF Embed -->
-    <iframe src="assets/Commerce Society Governing Body.pdf"></iframe>
+    <!-- PDF Viewer -->
+    <object data="assets/Commerce-Society-Governing-Body.pdf" type="application/pdf">
+      <p>Your browser doesn’t support inline PDF viewing.
+        <a href="assets/Commerce-Society-Governing-Body.pdf" target="_blank">Click here to view the PDF.</a>
+      </p>
+    </object>
 
     <div style="text-align:center; margin-top:20px;">
-      <a href="assets/Commerce Society Governing Body.pdf" target="_blank" class="btn">Open in New Tab</a>
+      <a href="assets/Commerce-Society-Governing-Body.pdf" target="_blank" class="btn">Open in Full View</a>
+      <a href="assets/Commerce-Society-Governing-Body.pdf" download class="btn">Download PDF</a>
     </div>
   </section>
 
@@ -146,6 +172,19 @@
     <p>Developed & Managed by Rover & Ranger Unit</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- BACK TO TOP -->
+  <a href="#" id="back-to-top" title="Go to top">↑</a>
+
+  <script>
+    // Back to top button
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+  </script>
 </body>
-          </html>
+</html>
