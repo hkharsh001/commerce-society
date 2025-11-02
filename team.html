@@ -1,118 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team | Commerce Society - NSCBM Govt. College Hamirpur</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | Commerce Society - NSCBM Govt. College Hamirpur</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ===== TEAM PAGE (PDF EMBED) ===== */
-    .team-pdf {
-      text-align: center;
-      padding: 60px 10%;
-    }
-
-    .team-pdf h3 {
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    .team-pdf p {
-      font-size: 1rem;
-      color: #333;
-      margin-bottom: 25px;
-    }
-
-    .team-pdf object {
-      width: 100%;
-      height: 800px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-    }
-
-    .team-pdf .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 28px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .team-pdf .btn:hover {
-      opacity: 0.9;
-      transform: scale(1.05);
-    }
-
-    /* ===== BACK TO TOP BUTTON ===== */
-    #back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      font-size: 20px;
-      padding: 10px 15px;
-      border-radius: 50%;
-      text-decoration: none;
-      display: none;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    #back-to-top:hover {
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
-
-    /* ===== MOBILE OPTIMIZATION ===== */
-    @media (max-width: 768px) {
-      .team-pdf {
-        padding: 40px 5%;
-      }
-
-      .team-pdf object {
-        height: 500px;
-      }
-
-      .team-pdf h3 {
-        font-size: 1.4rem;
-      }
-
-      .team-pdf p {
-        font-size: 0.95rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .team-pdf object {
-        height: 400px;
-      }
-
-      .team-pdf .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- HEADER -->
+
+  <!-- ======= HEADER ======= -->
   <header>
     <div class="container header">
       <div class="brand">
-        <img src="assets/colege logo.jpg" alt="College Logo">
+        <img src="assets/college-logo.jpg" alt="College Logo">
         <img src="assets/logo.png" alt="Society Logo">
         <div>
           <h1>Commerce Society</h1>
@@ -140,51 +42,39 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- ======= HERO ======= -->
   <section class="hero">
     <div class="container">
-      <h2>Our Team</h2>
-      <p>The dedicated members who drive the vision and excellence of the Commerce Society.</p>
+      <h2>Meet Our Team</h2>
+      <p>Dedicated faculty and dynamic student members driving the Commerce Society forward.</p>
     </div>
   </section>
 
-  <!-- EMBEDDED PDF SECTION -->
+  <!-- ======= TEAM PDF VIEWER ======= -->
   <section class="team-pdf container">
-    <h3>Commerce Society Governing Body 2025</h3>
-    <p>Meet the faculty coordinators and student members who make the Commerce Society thrive.</p>
-    
-    <!-- PDF Viewer -->
-    <object data="assets/Commerce-Society-Governing-Body.pdf" type="application/pdf">
-      <p>Your browser doesn’t support inline PDF viewing.
-        <a href="assets/Commerce-Society-Governing-Body.pdf" target="_blank">Click here to view the PDF.</a>
-      </p>
-    </object>
+    <h3>Governing Body of Commerce Society</h3>
+    <p>Here’s the official governing body and core members list of the Commerce Society, N.S.C.B.M. Govt. College Hamirpur.</p>
 
-    <div style="text-align:center; margin-top:20px;">
-      <a href="assets/Commerce-Society-Governing-Body.pdf" target="_blank" class="btn">Open in Full View</a>
-      <a href="assets/Commerce-Society-Governing-Body.pdf" download class="btn">Download PDF</a>
-    </div>
+    <iframe 
+      src="https://docs.google.com/gview?url=https://commercesociety-gchamirpur.vercel.app/assets/Commerce-Society-Governing-Body.pdf&embedded=true" 
+      width="100%" 
+      height="800px" 
+      style="border:none; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+    </iframe>
+
+    <a href="assets/Commerce-Society-Governing-Body.pdf" target="_blank" class="btn">Open in Full Screen</a>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ======= FOOTER ======= -->
   <footer>
-    <p>© 2025 Commerce Society, NSCBM Govt. College Hamirpur | All Rights Reserved</p>
-    <p>Developed & Managed by Rover & Ranger Unit</p>
+    <p>© 2025 Commerce Society, NSCBM Govt College Hamirpur | All Rights Reserved</p>
+    <p>Designed & Managed by Rover & Ranger Unit</p>
   </footer>
 
-  <!-- BACK TO TOP -->
+  <!-- Back to Top Button -->
   <a href="#" id="back-to-top" title="Go to top">↑</a>
 
-  <script>
-    // Back to top button
-    const backToTop = document.getElementById("back-to-top");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
-    });
-  </script>
+  <!-- ======= JS ======= -->
+  <script src="script.js"></script>
 </body>
 </html>
