@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team | Commerce Society - NSCBM Govt. College Hamirpur</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
+  <style>
+    /* ===== TEAM PAGE (PDF EMBED) ===== */
+    .team-pdf {
+      text-align: center;
+      padding: 60px 10%;
+    }
+
+    .team-pdf h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .team-pdf p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .team-pdf iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    .team-pdf .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 28px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .team-pdf .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    /* ===== MOBILE OPTIMIZATION ===== */
+    @media (max-width: 768px) {
+      .team-pdf {
+        padding: 40px 5%;
+      }
+
+      .team-pdf iframe {
+        height: 500px;
+      }
+
+      .team-pdf h3 {
+        font-size: 1.4rem;
+      }
+
+      .team-pdf p {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-pdf iframe {
+        height: 400px;
+      }
+
+      .team-pdf .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header">
+      <div class="brand">
+        <img src="assets/college logo.jpg" alt="College Logo">
+        <img src="assets/logo.png" alt="Society Logo">
+        <div>
+          <h1>Commerce Society</h1>
+          <p>N.S.C.B.M. Govt. College, Hamirpur</p>
+        </div>
+      </div>
+
+      <button id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="team.html" class="active">Team</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h2>Our Team</h2>
+      <p>The dedicated members who drive the vision of the Commerce Society.</p>
+    </div>
+  </section>
+
+  <!-- EMBEDDED PDF SECTION -->
+  <section class="team-pdf container">
+    <h3>Commerce Society Governing Body 2025</h3>
+    <p>You can view or download the full list of members below.</p>
+    
+    <!-- PDF Embed -->
+    <iframe src="assets/Commerce Society Governing Body.pdf"></iframe>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="assets/Commerce Society Governing Body.pdf" target="_blank" class="btn">Open in New Tab</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Commerce Society, NSCBM Govt. College Hamirpur | All Rights Reserved</p>
+    <p>Developed & Managed by Rover & Ranger Unit</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+          </html>
